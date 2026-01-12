@@ -2,11 +2,10 @@ import requests
 import json
 
 
-
 class GetCoordinates:
-    
+
     @staticmethod
-    def ip_request(ip)-> json:
+    def ip_request(ip) -> json:
         try:
             if not ip:
                 return "no ip reseived"
@@ -15,16 +14,13 @@ class GetCoordinates:
             return data
         except Exception as Erorr:
             return Erorr
-    
+
     @staticmethod
-    def get_lat_lon(js)->list[dict]:
+    def get_lat_lon(json_data) -> list[dict]:
         try:
-            if not js:
+            if not json_data:
                 return "no data reseived"
-            data = []
-            data.append({"lat":js["lat"]},{"lon":js["lon"]})
+            data = [{"lat": json_data["lat"]}, {"lon": json_data["lon"]}]
             return data
         except Exception as Erorr:
             return Erorr
-
-
