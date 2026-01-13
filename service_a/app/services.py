@@ -24,3 +24,4 @@ class GetCoordinates:
             return data
         except Exception as Erorr:
             return Erorr
+
