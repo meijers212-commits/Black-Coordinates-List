@@ -6,7 +6,7 @@ from schemas import PostIpAndCoordinates, PostRequests
 redis_conactor_server = APIRouter()
 
 
-@redis_conactor_server.post("/save_to_db")
+@redis_conactor_server.post("/writ_to_db")
 def save_to_data_base():
     pass
    
