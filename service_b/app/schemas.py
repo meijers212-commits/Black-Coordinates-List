@@ -5,7 +5,7 @@ class PostIpAndCoordinates(BaseModel):
     ip :IPvAnyAddress
     coordinates : dict[str,float]
 
-class GetRequests(BaseModel):
+class PostRequests(BaseModel):
     ip :IPvAnyAddress
     coordinates : dict[str,float]
     description: Optional[str] = None
