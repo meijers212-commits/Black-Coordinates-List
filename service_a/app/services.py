@@ -1,14 +1,14 @@
 import requests
 import json
-
+from pydantic import IPvAnyAddress
 
 class GetCoordinates:
 
     @staticmethod
-    def ip_request(ip:str) -> json:
+    def ip_request(ip:IPvAnyAddress) -> json:
         try:
             if not ip:
-                return "no ip reseived"
+                return {"Massege": "no ip reseived"}
             url = f"http://ip-api.com/json/{ip}"
             data = requests.get(url).json()
             return data
