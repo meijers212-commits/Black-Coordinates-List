@@ -1,6 +1,5 @@
 from fastapi import FastAPI, APIRouter, HTTPException
-
-
+from schemas import PostIp
 
 
 
@@ -8,9 +7,9 @@ from fastapi import FastAPI, APIRouter, HTTPException
 router = APIRouter()
 
 
-@router.post("/")
-def Receiving_coordinates_and_sending_to_server_b():
-    pass
+@router.post("/ip")
+def client_api_manegment(ip:PostIp):
+    
     
         
 
