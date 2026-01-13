@@ -5,7 +5,7 @@ import json
 class GetCoordinates:
 
     @staticmethod
-    def ip_request(ip) -> json:
+    def ip_request(ip:str) -> json:
         try:
             if not ip:
                 return "no ip reseived"
@@ -16,11 +16,11 @@ class GetCoordinates:
             return Erorr
 
     @staticmethod
-    def get_lat_lon(json_data) -> list[dict]:
+    def get_lat_lon(json_data:json) -> dict[str,float]:
         try:
             if not json_data:
                 return "no data reseived"
-            data = [{"lat": json_data["lat"]}, {"lon": json_data["lon"]}]
+            data = {"lat": json_data["lat"], "lon": json_data["lon"]}
             return data
         except Exception as Erorr:
             return Erorr
