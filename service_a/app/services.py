@@ -2,6 +2,7 @@ import requests
 import json
 from pydantic import IPvAnyAddress
 
+
 class GetCoordinates:
 
     @staticmethod
@@ -25,3 +26,4 @@ class GetCoordinates:
         except Exception as Erorr:
             return Erorr
 
+  
