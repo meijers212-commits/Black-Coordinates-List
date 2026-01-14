@@ -1,11 +1,9 @@
 from pydantic import BaseModel ,IPvAnyAddress
 from typing import Optional
    
-class PostIpAndCoordinates(BaseModel):
-    ip :IPvAnyAddress
-    coordinates : dict[str,float]
-
-class PostRequests(BaseModel):
-    ip :IPvAnyAddress
-    coordinates : dict[str,float]
-    description: Optional[str] = None
+class PostIp(BaseModel):
+    ip: IPvAnyAddress
+   
+class PostIpAndCoordinates(PostIp):
+    lat: str
+    lon: str
