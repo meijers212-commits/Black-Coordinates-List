@@ -7,4 +7,5 @@ app = FastAPI()
 app.include_router(router, tags=["ip-coordinates"])
 
 if __name__ == "__main__":
-    uvicorn.run(app,host="localhost",port=8000)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

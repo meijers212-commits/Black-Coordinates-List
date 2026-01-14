@@ -7,8 +7,8 @@ services:
 
   storage_api:
     build:
-      context: ./service_b/app
-      dockerfile: app/Dockerfile
+      context: ./service_b/app  
+      dockerfile: Dockerfile
     container_name: storage_api
     ports:
       - "5000:5000"
@@ -22,8 +22,8 @@ services:
 
   resolution_api:
     build:
-      context: ./service_a/app
-      dockerfile: app/Dockerfile
+      context: ./service_a/app 
+      dockerfile: Dockerfile
     container_name: resolution_api
     ports:
       - "8000:8000"
