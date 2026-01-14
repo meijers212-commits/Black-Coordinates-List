@@ -1,7 +1,7 @@
 import requests
 import json
-from pydantic import IPvAnyAddress
-
+from pydantic import IPvAnyAddress 
+from schemas import PostIpAndCoordinates
 
 class GetCoordinates:
 
@@ -26,4 +26,10 @@ class GetCoordinates:
         except Exception as Erorr:
             return Erorr
 
-  
+    @staticmethod
+    def conection_whit_server_b(data:PostIpAndCoordinates):
+        url = 'https://localhost:8001/db_controler/post'
+        x = requests.post(url, json = data.model_dump())
+        return x.json()
+
+        
