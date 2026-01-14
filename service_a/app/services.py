@@ -28,8 +28,9 @@ class GetCoordinates:
 
     @staticmethod
     def conection_whit_server_b(data:PostIpAndCoordinates):
-        url = 'https://localhost:8001/db_controler/post'
-        x = requests.post(url, json = data.model_dump())
-        return x.json()
+        url = "localhost:8001"
+        x = requests.post(url, data)
+        return x
 
         
+basic_url ='https://localhost:8001/db_controler/post'
