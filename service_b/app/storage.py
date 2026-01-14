@@ -1,5 +1,5 @@
 import redis 
-import json
+from schemas import PostIpAndCoordinates,PostRequests
 
 class Connection:
     
@@ -12,13 +12,13 @@ class Connection:
 class DBopertion:
 
     @staticmethod
-    def insert_data_to_db(data):
+    def insert_data_to_db(data:PostIpAndCoordinates):
         try: 
             connection = Connection.get_connection()
-            connection.set(data.ip,json.dumps(data.coordinates))
+            connection.hset(data.ip, mapping=data.coordinates)
             connection.close()
-            data.description = "Content saved successfully to db."
-            return data.description
+            requests = PostRequests(ip=data.ip,coordinates=data.coordinates,description="Content saved successfully to db.")
+            return requests
         except Exception as e:
             raise e 
 
@@ -29,7 +29,7 @@ class DBopertion:
             all_keys = connection.keys()
             all_data = []
             for key in all_keys:
-                all_data.append({key:connection.get(key)})
+                all_data.append({key:connection.hgetall(key)})
             connection.close()
             return all_data
         except Exception as e:
