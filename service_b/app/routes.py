@@ -22,3 +22,7 @@ def get_all_from_db():
     return DB.get_all_from_db()
     
 
+    
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}

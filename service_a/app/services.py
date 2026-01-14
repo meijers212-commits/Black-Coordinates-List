@@ -2,8 +2,10 @@ import requests
 import json
 from pydantic import IPvAnyAddress 
 from schemas import PostIpAndCoordinates
+import os
 
-
+SERVICE_B_HOST = os.getenv("SERVICE_B_HOST", "localhost")
+SERVICE_B_PORT = os.getenv("SERVICE_B_PORT", "5000") 
 
 class GetCoordinates:
 
@@ -29,19 +31,17 @@ class GetCoordinates:
         return {"lat": str(json_data["lat"]), "lon": str(json_data["lon"])}
 
     
-
+    
  
+
     @staticmethod
-    def connection_with_server_b(data: PostIpAndCoordinates): 
+    def connection_with_server_b(data_to_send):
+        # בניית הכתובת בצורה דינמית
+        url = f"http://{SERVICE_B_HOST}:{SERVICE_B_PORT}/save_coordinates"
+        
         try:
-            url = "http://storage_api:5000/writ_to_db"
-            
-            payload = data.model_dump()
-            payload["ip"] = str(payload["ip"])
-            
-            response = requests.post(url, json=payload)
-            response.raise_for_status()
-            return response.json() 
+            response = requests.post(url, json=data_to_send)
+            return response.json()
         except Exception as e:
-            print(f"Error in Server A: {e}")
-            raise e
+            return {"status": "error", "message": str(e)}
+        

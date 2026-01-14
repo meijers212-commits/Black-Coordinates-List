@@ -7,6 +7,12 @@ router = APIRouter()
 
 
 
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+
+
 @router.post("/ip")
 def client_api_manegment(ip: PostIp):
    

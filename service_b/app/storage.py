@@ -1,11 +1,19 @@
 import redis
 import json
 from schemas import PostIpAndCoordinates
+import os
+
+
 class Connection:
+
     @staticmethod
     def get_connection():
-        # שימוש בשם השירות מה-docker-compose
-        return redis.Redis(host='database', port=6379, decode_responses=True)
+       
+        host = os.getenv("REDIS_HOST", "database")
+        port = int(os.getenv("REDIS_PORT", 6379))
+        db = int(os.getenv("REDIS_DB", 0))
+        
+        return redis.Redis(host=host, port=port, db=db, decode_responses=True)
 
 class DBoperation:
     @staticmethod
