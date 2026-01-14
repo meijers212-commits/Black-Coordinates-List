@@ -12,18 +12,20 @@ class Connection:
 class DBopertion:
 
     @staticmethod
-    def insert_data_to_db(data:PostIpAndCoordinates):
+    def insert_data_to_db(data:PostIpAndCoordinates) -> PostRequests:
         try: 
             connection = Connection.get_connection()
             connection.hset(data.ip, mapping=data.coordinates)
             connection.close()
             requests = PostRequests(ip=data.ip,coordinates=data.coordinates,description="Content saved successfully to db.")
             return requests
-        except Exception as e:
-            raise e 
+        except Exception as error:
+            requests = PostRequests(ip=data.ip,coordinates=data.coordinates,description=error)
+            return requests
+            
 
     @staticmethod
-    def get_all_from_db():
+    def get_all_from_db() -> list[dict]:
         try:
             connection = Connection.get_connection()
             all_keys = connection.keys()
@@ -32,5 +34,5 @@ class DBopertion:
                 all_data.append({key:connection.hgetall(key)})
             connection.close()
             return all_data
-        except Exception as e:
-            raise e 
+        except Exception as error:
+            raise error

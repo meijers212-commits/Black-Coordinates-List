@@ -13,6 +13,6 @@ def save_to_data_base(data:PostIpAndCoordinates):
  
 @redis_conactor_server.get("/get_all")
 def get_all_from_db():
-    pass
+    return DB.get_all_from_db()
 
 
