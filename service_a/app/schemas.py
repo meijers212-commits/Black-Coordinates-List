@@ -9,6 +9,5 @@ class PostIpAndCoordinates(PostIp):
     lon: str
     
 
-class GetRequests(PostIpAndCoordinates):
-    description: Optional[str] = None
+   
 
