@@ -1,5 +1,4 @@
 from pydantic import BaseModel ,IPvAnyAddress
-from typing import Optional
    
 class PostIp(BaseModel):
     ip: IPvAnyAddress

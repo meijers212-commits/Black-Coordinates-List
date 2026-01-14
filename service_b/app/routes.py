@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from schemas import PostIpAndCoordinates, PostRequests
+from schemas import PostIpAndCoordinates
 from storage import DBopertion as DB
 
 
@@ -14,5 +14,3 @@ def save_to_data_base(data:PostIpAndCoordinates):
 @redis_conactor_server.get("/get_all")
 def get_all_from_db():
     return DB.get_all_from_db()
-
-

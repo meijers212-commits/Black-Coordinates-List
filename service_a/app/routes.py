@@ -13,8 +13,3 @@ def client_api_manegment(ip:PostIp):
     data = PostIpAndCoordinates(ip=ip.ip, lat=coordinates["lat"] , lon=coordinates["lon"])
     x = gc.conection_whit_server_b(data)
     return x
-
-
-        
-
-
