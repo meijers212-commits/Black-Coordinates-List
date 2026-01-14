@@ -1,5 +1,5 @@
 import redis 
-from schemas import PostIpAndCoordinates,
+from schemas import PostIpAndCoordinates
 
 class Connection:
     
@@ -15,7 +15,7 @@ class DBopertion:
     def insert_data_to_db(data:PostIpAndCoordinates) -> bool:
         try: 
             connection = Connection.get_connection()
-            connection.hset(data.ip,data.model_dump_json())
+            connection.set(data.ip,data.model_dump_json())
             connection.close()
             return True
         except Exception as error:

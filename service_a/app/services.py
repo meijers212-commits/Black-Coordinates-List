@@ -17,20 +17,24 @@ class GetCoordinates:
             return Erorr
 
     @staticmethod
-    def get_lat_lon(json_data:json) -> dict[str,float]:
+    def get_lat_lon(json_data:json) :
         try:
             if not json_data:
                 return "no data reseived"
-            data = {"lat": json_data["lat"], "lon": json_data["lon"]}
+            data = {"lat": str(json_data["lat"]), "lon": str(json_data["lon"])}
             return data
         except Exception as Erorr:
             return Erorr
 
     @staticmethod
     def conection_whit_server_b(data:PostIpAndCoordinates):
-        url = "localhost:8001"
-        x = requests.post(url, data)
-        return x
+        try:
+            url = "http://localhost:5000/writ_to_db"
+            dataa = data.model_dump_json()
+            requests.post(url, dataa)
+            # return True
+        except Exception as e:
+            # raise e
+            print(e)
 
         
-basic_url ='https://localhost:8001/db_controler/post'

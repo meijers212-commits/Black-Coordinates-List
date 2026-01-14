@@ -1,7 +1,7 @@
 from pydantic import BaseModel ,IPvAnyAddress
    
 class PostIp(BaseModel):
-    ip: IPvAnyAddress
+    ip: str
    
 class PostIpAndCoordinates(PostIp):
     lat: str

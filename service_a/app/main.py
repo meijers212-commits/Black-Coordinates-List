@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 import uvicorn
-from routes import ip_router
+from routes import router
 
 app = FastAPI()
 
-app.include_router(ip_router,tags=["ip-coordinates"])
+app.include_router(router, tags=["ip-coordinates"])
 
 if __name__ == "__main__":
     uvicorn.run(app,host="localhost",port=8000)
