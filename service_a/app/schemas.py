@@ -4,12 +4,11 @@ from typing import Optional
 class PostIp(BaseModel):
     ip: IPvAnyAddress
    
-class PostIpAndCoordinates(BaseModel):
-    ip :IPvAnyAddress
-    coordinates : dict[str,float]
+class PostIpAndCoordinates(PostIp):
+    lat: str
+    lon: str
+    
 
-class GetRequests(BaseModel):
-    ip :IPvAnyAddress
-    coordinates : dict[str,float]
+class GetRequests(PostIpAndCoordinates):
     description: Optional[str] = None
 
