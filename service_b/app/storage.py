@@ -1,5 +1,5 @@
 import redis 
-from schemas import PostIpAndCoordinates,PostRequests
+from schemas import PostIpAndCoordinates,
 
 class Connection:
     
