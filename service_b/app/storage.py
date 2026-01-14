@@ -12,16 +12,14 @@ class Connection:
 class DBopertion:
 
     @staticmethod
-    def insert_data_to_db(data:PostIpAndCoordinates) -> PostRequests:
+    def insert_data_to_db(data:PostIpAndCoordinates) -> bool:
         try: 
             connection = Connection.get_connection()
-            connection.hset(data.ip, mapping=data.coordinates)
+            connection.hset(data.ip,data.model_dump_json())
             connection.close()
-            requests = PostRequests(ip=data.ip,coordinates=data.coordinates,description="Content saved successfully to db.")
-            return requests
+            return True
         except Exception as error:
-            requests = PostRequests(ip=data.ip,coordinates=data.coordinates,description=error)
-            return requests
+            return False
             
 
     @staticmethod
@@ -36,5 +34,3 @@ class DBopertion:
             return all_data
         except Exception as error:
             raise error
-        
-        

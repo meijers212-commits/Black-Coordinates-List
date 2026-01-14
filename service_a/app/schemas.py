@@ -9,5 +9,4 @@ class PostIpAndCoordinates(PostIp):
     lon: str
     
 
-   
 
