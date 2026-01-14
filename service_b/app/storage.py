@@ -36,3 +36,5 @@ class DBopertion:
             return all_data
         except Exception as error:
             raise error
+        
+        
